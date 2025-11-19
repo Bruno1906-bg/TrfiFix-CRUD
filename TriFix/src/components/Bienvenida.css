@@ -1,0 +1,29 @@
+.bienvenido {
+  background-color: #029D95;
+  color: #fff;
+  font-size: 10px;
+  text-align: center;
+  padding: 10px;
+  border-radius: 15px;
+  margin-top: -50px;
+}
+
+.info {
+  color: #ffffff;
+  text-align: left;
+  font-size: 15px;
+  padding: 10px;
+  margin-top: 0px;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+}
+
+.bienvenido button {
+  margin-top: -10px;
+  padding: 10px 20px;
+  background-color: #066964e5;
+  color: white;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+}

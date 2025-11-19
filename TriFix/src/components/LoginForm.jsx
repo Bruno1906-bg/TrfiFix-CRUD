@@ -2,9 +2,11 @@ import "./LoginForm.css";
 import { useState } from "react";
 import { FaUserCircle } from "react-icons/fa";
 import { RiLockPasswordFill } from "react-icons/ri";
+import background from '../assets/background.png';
 
 export function LoginForm() {
   return (
+    <div className="fondo" style={{ backgroundImage: `url(${background})` }}>
     <section className="Formulario">
       <h1>Iniciar Sesión</h1>
       <div className="usuariocontraseña">
@@ -28,5 +30,6 @@ export function LoginForm() {
         </p>
       </div>
     </section>
+    </div>
   );
 }

@@ -1,0 +1,64 @@
+.muro-peticiones {
+  padding: 10px;
+}
+
+.muro-peticiones h2 {
+  margin-bottom: 20px;
+  font-size: 1.4em;
+  color: #000000;
+  text-align: center;
+}
+
+.peticiones-row {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap; 
+  color: #000000;
+}
+
+.peticion {
+  background-color: #fff;
+  width: 300px;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease;
+}
+
+.peticion:hover {
+  transform: translateY(-5px);
+}
+
+.peticion.alta {
+  border-left: 5px solid #f44336;
+}
+
+.peticion.media {
+  border-left: 5px solid #ff9800;
+}
+
+.peticion.baja {
+  border-left: 5px solid #2196f3;
+}
+
+.peticion strong {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #000000;
+}
+
+.peticion span {
+  font-size: 0.9em;
+  color: #000000;
+}
+
+.peticion img {
+  width: 150px;        
+  height: 100px;        
+  display: block;
+  margin: 0 auto 10px; 
+  object-fit: contain;
+}

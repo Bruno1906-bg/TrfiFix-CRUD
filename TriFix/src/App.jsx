@@ -1,11 +1,14 @@
+import React from 'react';
 import './App.css';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { LoginForm } from './components/LoginForm';
+import { WelcomeBanner } from './components/Bienvenida';
+import { Muro } from './components/Muro';
 
 function App() {
   return (
     <div>
-      <LoginForm/>
+      <WelcomeBanner/>
+      <Muro/>
     </div>
   );
 }
