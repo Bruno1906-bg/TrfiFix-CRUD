@@ -1,29 +1,30 @@
 .bienvenido {
   background-color: #029D95;
   color: #fff;
-  font-size: 10px;
+  padding: 30px;
+  border-radius: 12px;
+  margin-bottom: 30px;
   text-align: center;
-  padding: 10px;
-  border-radius: 15px;
-  margin-top: -50px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .info {
-  color: #ffffff;
-  text-align: left;
-  font-size: 15px;
-  padding: 10px;
-  margin-top: 0px;
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-
+  font-size: 18px;
+  margin-bottom: 20px;
+  line-height: 1.6;
 }
 
 .bienvenido button {
-  margin-top: -10px;
-  padding: 10px 20px;
-  background-color: #066964e5;
+  padding: 12px 24px;
+  background-color: #066964;
   color: white;
   border: none;
-  border-radius: 15px;
+  border-radius: 8px;
   cursor: pointer;
+  font-size: 15px;
+  transition: background 0.3s ease;
+}
+
+.bienvenido button:hover {
+  background-color: #044f4a;
 }

@@ -1,115 +1,242 @@
+/* Fondo general */
 .fondo {
   width: 100vw;
   height: 100vh;
-  background-image: url('./assets/background.png');
   display: flex;
   justify-content: center;
   align-items: center;
-  position: fixed;
-  top: 0;
-  left: 0;
   background-size: cover;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* Contenedor del formulario */
 .Formulario {
-    width: 350px;
-    background: rgba(230, 230, 230, 0.8);
-    color: rgb(0, 0, 0);
-    border-radius: 25px;
-    padding: 40px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, .2);
+  background: rgba(255, 255, 255, 0.95);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+  width: 45%;
+  max-width: 400px;
+  box-sizing: border-box;
+  animation: fadeIn 0.8s ease-in-out;
 }
 
+/* Layout interno del formulario */
+.Formulario form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Título */
 .Formulario h1 {
-    font-size: 45px;
-    text-align: center;
-    color: rgb(0, 0, 0);
+  margin-bottom: 10px;
+  color: #333;
+  font-size: 26px;
+  text-align: center;
 }
 
-.Formulario .usuariocontraseña {
-    position: relative;
-    width: 95%;
-    height: 40px;
-    margin: 45px 0;
+/* Grupo de input con ícono */
+.usuariocontraseña {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  background: #f9f9f9;
+  transition: border-color 0.3s ease;
 }
 
-.usuariocontraseña input {
-    width: 100%;
-    height: 60%;
-    background: rgba(255, 255, 255, 0.8);
-    border: none;
-    outline: none;
-    border: 2px solid rgb(255, 255, 255, .2);
-    border-radius: 40px;
-    font-size: 16px;
-    color: #000000;
-    padding: 10px 10px 10px 10px;
-}
-
-.usuariocontraseña input::placeholder {
-    color: #000000;
+.usuariocontraseña:focus-within {
+  border-color: #007bff;
 }
 
 .usuariocontraseña .icono {
-    position: absolute;
-    right: -10px;
-    top: 30%;
-    transform: translateY(15%);
-    font-size: 20px;
-    color: rgb(0, 0, 0);
+  font-size: 20px;
+  margin-right: 10px;
+  color: #555;
 }
 
-.Formulario .recordar-contra {
-    display: flex;
-    justify-content: space-between;
-    font-size: 14.5px;
-    margin: -15px 0 15px;
-    color:#000000;
+.usuariocontraseña input {
+  border: none;
+  outline: none;
+  flex: 1;
+  font-size: 15px;
+  background: transparent;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-.recordar-contra label input {
-    accent-color: #000000;
-    margin-right: 4px;
+/* Selector de rol */
+.selector-rol {
+  text-align: left;
+}
+
+.selector-rol label {
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.selector-rol select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+  background-color: #f9f9f9;
+  box-sizing: border-box;
+}
+
+/* Recordar contraseña */
+.recordar-contra {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
 }
 
 .recordar-contra a {
-    color: #000000;
-    text-decoration: none;
+  color: #007bff;
+  text-decoration: none;
 }
 
 .recordar-contra a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
-.Formulario button {
-    width: 100%;
-    height: 50px;
-    background: rgb(252, 252, 252);
-    border: none;
-    outline: none;
-    border-radius: 40px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
-    cursor: pointer;
-    font-size: 18px;
-    color: #333;
-    font-weight: 600;
+/* Botón principal */
+button[type="submit"] {
+  width: 100%;
+  padding: 12px;
+  background: #007bff;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
 }
 
-.Formulario .link  {
-    font-size: 14.5px;
-    text-align: center;
-    margin: 20px 0 15px;
+button[type="submit"]:hover {
+  background: #0056b3;
 }
 
-.link p a {
-    color:#159591;
-    text-decoration: none;
-    font-weight: 600;
+/* Link de registro */
+.link {
+  margin-top: 20px;
+  font-size: 14px;
+  text-align: center;
 }
 
-.link p a:hover {
-    text-decoration: underline;
-
+.link a {
+  color: #007bff;
+  text-decoration: none;
 }
 
+.link a:hover {
+  text-decoration: underline;
+}
 
+/* Modal overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.4s ease-in-out;
+  z-index: 999;
+}
+
+/* Modal */
+.modal {
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  animation: slideUp 0.5s ease;
+  box-sizing: border-box;
+}
+
+.modal h2 {
+  margin-bottom: 20px;
+  color: #333;
+  font-size: 20px;
+  text-align: center;
+}
+
+.modal form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.modal input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.modal button {
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.modal button[type="submit"] {
+  background: #28a745;
+  color: #fff;
+}
+
+.modal button[type="submit"]:hover {
+  background: #218838;
+}
+
+.modal button[type="button"] {
+  background: #dc3545;
+  color: #fff;
+}
+
+.modal button[type="button"]:hover {
+  background: #c82333;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* Responsive para móviles */
+@media (max-width: 600px) {
+  .Formulario {
+    padding: 25px;
+    max-width: 90%;
+  }
+
+  .modal {
+    padding: 25px;
+    max-width: 90%;
+  }
+}
