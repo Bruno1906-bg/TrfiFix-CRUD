@@ -1,15 +1,13 @@
-/* Fondo general */
 .fondo {
   width: 100vw;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-size: cover;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #066964;
 }
 
-/* Contenedor del formulario */
 .Formulario {
   background: rgba(255, 255, 255, 0.95);
   padding: 20px;
@@ -21,14 +19,12 @@
   animation: fadeIn 0.8s ease-in-out;
 }
 
-/* Layout interno del formulario */
 .Formulario form {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-/* Título */
 .Formulario h1 {
   margin-bottom: 10px;
   color: #333;
@@ -36,7 +32,6 @@
   text-align: center;
 }
 
-/* Grupo de input con ícono */
 .usuariocontraseña {
   display: flex;
   align-items: center;
@@ -58,6 +53,7 @@
 }
 
 .usuariocontraseña input {
+  color:black;
   border: none;
   outline: none;
   flex: 1;
@@ -67,50 +63,10 @@
   box-sizing: border-box;
 }
 
-/* Selector de rol */
-.selector-rol {
-  text-align: left;
-}
-
-.selector-rol label {
-  font-weight: bold;
-  color: #333;
-  margin-bottom: 5px;
-  display: block;
-}
-
-.selector-rol select {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 15px;
-  background-color: #f9f9f9;
-  box-sizing: border-box;
-}
-
-/* Recordar contraseña */
-.recordar-contra {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 13px;
-}
-
-.recordar-contra a {
-  color: #007bff;
-  text-decoration: none;
-}
-
-.recordar-contra a:hover {
-  text-decoration: underline;
-}
-
-/* Botón principal */
 button[type="submit"] {
   width: 100%;
   padding: 12px;
-  background: #007bff;
+  background: #066964;
   border: none;
   border-radius: 8px;
   color: #fff;
@@ -120,18 +76,18 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-  background: #0056b3;
+  background: #09918a;
 }
 
-/* Link de registro */
 .link {
   margin-top: 20px;
   font-size: 14px;
   text-align: center;
+  color: black;
 }
 
 .link a {
-  color: #007bff;
+  color: #066964;
   text-decoration: none;
 }
 
@@ -139,7 +95,6 @@ button[type="submit"]:hover {
   text-decoration: underline;
 }
 
-/* Modal overlay */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -154,7 +109,6 @@ button[type="submit"]:hover {
   z-index: 999;
 }
 
-/* Modal */
 .modal {
   background: #fff;
   padding: 30px;
@@ -209,15 +163,14 @@ button[type="submit"]:hover {
 }
 
 .modal button[type="button"] {
-  background: #dc3545;
+  background: #218838;
   color: #fff;
 }
 
 .modal button[type="button"]:hover {
-  background: #c82333;
+  background: #218838;
 }
 
-/* Animaciones */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
@@ -226,17 +179,4 @@ button[type="submit"]:hover {
 @keyframes slideUp {
   from { transform: translateY(50px); opacity: 0; }
   to { transform: translateY(0); opacity: 1; }
-}
-
-/* Responsive para móviles */
-@media (max-width: 600px) {
-  .Formulario {
-    padding: 25px;
-    max-width: 90%;
-  }
-
-  .modal {
-    padding: 25px;
-    max-width: 90%;
-  }
 }

@@ -1,22 +1,19 @@
-/* Fondo general para toda la app */
 html, body {
   margin: 0;
   padding: 0;
   width: 100vw;
   min-height: 100vh;
-  background-color: #f0f4f8; /* Puedes cambiar el color si usas imagen */
+  background-color: #f0f4f8;
   box-sizing: border-box;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Root contenedor principal */
 #root {
   width: 100%;
   min-height: 100vh;
   box-sizing: border-box;
 }
 
-/* Tarjetas y texto auxiliar (si usas en otras vistas) */
 .card {
   padding: 2em;
 }
@@ -25,7 +22,6 @@ html, body {
   color: #888;
 }
 
-/* Logo animado (si lo usas en login o landing) */
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -56,13 +52,144 @@ html, body {
   }
 }
 
-/* Layout vertical para el dashboard */
 .dashboard-wrapper {
   display: flex;
   flex-direction: column;
-  gap: 30px;
-  padding: 40px;
+  padding: 30px;
   max-width: 1200px;
   margin: 0 auto;
   box-sizing: border-box;
+}
+
+.dashboard-layout {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  min-height: 100vh;
+  background-color: #f0f4f8;
+}
+
+.sidebar {
+  background-color: #066964;
+  color: white;
+  padding: 20px 10px;
+  font-size: 16px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar li {
+  margin-bottom: 20px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.sidebar li:hover {
+  color: #c0e6e3;
+}
+
+.dashboard-content {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  overflow-x: hidden;
+}
+
+.fade-in {
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.peticiones-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  justify-content: center;
+}
+
+@media (min-width: 1024px) {
+  .peticiones-row {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.sidebar-logo {
+  max-width: 120px;
+  height: auto;
+  border-radius: 8px;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  color: #000000;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.modal-btn {
+  background-color: #066964; 
+  color: #000000;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 14px; 
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.modal-btn:hover {
+  background-color: #044f4a; 
+}
+
+.delete-btn {
+  background-color: #066964;
+}
+
+.delete-btn:hover {
+  background-color: #ffffff;
 }

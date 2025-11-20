@@ -8,22 +8,22 @@ export function Muro() {
   const peticiones = [
     {
       prioridad: 'alta',
-      texto: 'No Hay Agua En Los Sanitarios Y Hay Tuberías Que Presentan Fugas.',
-      usuario: 'Jsthedot2025',
+      texto: 'No tengo agua en el baño y algunas tuberias presentan fugas.',
+      usuario: 'Jeftegod25',
       rol: 'Cliente',
       img: aguaImg,
     },
     {
       prioridad: 'media',
-      texto: 'Una Lampara En El Salon De Clases D208 No Funciona.',
-      usuario: 'LustHeir47',
+      texto: 'Una lampara de mi casa no funciona y no se como instalar una.',
+      usuario: 'LuisFerTable',
       rol: 'Cliente',
       img: lamparaImg,
     },
     {
       prioridad: 'baja',
-      texto: 'El Aire Acondicionado No Funciona Correctamente.',
-      usuario: 'Oscar-Mon32',
+      texto: 'El aire acondicionado de mi cuarto no funciona y tengo mucho calor.',
+      usuario: 'OscarMoon35',
       rol: 'Cliente',
       img: aireImg,
     },

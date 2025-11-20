@@ -1,94 +1,71 @@
-import "./LoginForm.css";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { FaUserCircle } from "react-icons/fa";
-import { RiLockPasswordFill } from "react-icons/ri";
-import background from '../assets/background.png';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import './LoginForm.css';
 
 export function LoginForm() {
+  const [nombre, setNombre] = useState('');
+  const [correo, setCorreo] = useState('');
+  const [contraseña, setContraseña] = useState('');
   const navigate = useNavigate();
-  const [rol, setRol] = useState("cliente");
-  const [showModal, setShowModal] = useState(false);
 
-  const handleLogin = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    localStorage.setItem("rol", rol);
-    setShowModal(true);
-  };
 
-  const handleRegisterData = (e) => {
-    e.preventDefault();
-    setShowModal(false);
-    navigate("/dashboard");
+    const userData = {
+      nombre,
+      correo,
+      contraseña,
+    };
+
+    localStorage.setItem('perfilUsuario', JSON.stringify(userData));
+    navigate('/dashboard');
   };
 
   return (
-    <div className="fondo" style={{ backgroundImage: `url(${background})` }}>
-      <section className="Formulario">
+    <div className="fondo">
+      <div className="Formulario">
         <h1>Iniciar Sesión</h1>
-        <form onSubmit={handleLogin}>
+        <form onSubmit={handleSubmit}>
           <div className="usuariocontraseña">
-            <FaUserCircle className="icono" />
-            <input type="text" placeholder="Usuario" required />
-          </div>
-          <div className="usuariocontraseña">
-            <RiLockPasswordFill className="icono" />
-            <input type="password" placeholder="Contraseña" required />
+            <span className="icono"></span>
+            <input
+              type="text"
+              placeholder="Nombre"
+              value={nombre}
+              onChange={(e) => setNombre(e.target.value)}
+              required
+            />
           </div>
 
-          {/* Selector de rol */}
-          <div className="selector-rol">
-            <label>Selecciona tu rol:</label>
-            <select value={rol} onChange={(e) => setRol(e.target.value)}>
-              <option value="cliente">Cliente</option>
-              <option value="administrador">Administrador</option>
-              <option value="tecnico">Técnico</option>
-            </select>
+          <div className="usuariocontraseña">
+            <span className="icono"></span>
+            <input
+              type="email"
+              placeholder="Correo"
+              value={correo}
+              onChange={(e) => setCorreo(e.target.value)}
+              required
+            />
           </div>
 
-          <button type="submit">Iniciar</button>
+          <div className="usuariocontraseña">
+            <span className="icono"></span>
+            <input
+              type="password"
+              placeholder="Contraseña"
+              value={contraseña}
+              onChange={(e) => setContraseña(e.target.value)}
+              required
+            />
+          </div>
+
+          <button type="submit">Entrar</button>
+
+          <div className="link">
+            ¿No tienes cuenta? <a href="#">Regístrate</a>
+          </div>
         </form>
-      </section>
-
-      {/* Modal dinámico según rol */}
-      {showModal && (
-        <div className="modal-overlay">
-          <div className="modal">
-            <h2>Registrar Datos de {rol.charAt(0).toUpperCase() + rol.slice(1)}</h2>
-            <form onSubmit={handleRegisterData}>
-              {rol === "cliente" && (
-                <>
-                  <input type="text" placeholder="Nombre completo" required />
-                  <input type="email" placeholder="Correo electrónico" required />
-                  <input type="tel" placeholder="Teléfono" required />
-                  <input type="text" placeholder="Dirección" required />
-                </>
-              )}
-
-              {rol === "administrador" && (
-                <>
-                  <input type="text" placeholder="Nombre completo" required />
-                  <input type="email" placeholder="Correo corporativo" required />
-                  <input type="text" placeholder="Departamento" required />
-                  <input type="text" placeholder="Nivel de acceso" required />
-                </>
-              )}
-
-              {rol === "tecnico" && (
-                <>
-                  <input type="text" placeholder="Nombre completo" required />
-                  <input type="email" placeholder="Correo electrónico" required />
-                  <input type="text" placeholder="Especialidad técnica" required />
-                  <input type="text" placeholder="Número de empleado" required />
-                </>
-              )}
-
-              <button type="submit">Guardar y continuar</button>
-              <button type="button" onClick={() => setShowModal(false)}>Cancelar</button>
-            </form>
-          </div>
-        </div>
-      )}
+      </div>
     </div>
   );
 }
