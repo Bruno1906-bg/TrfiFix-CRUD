@@ -15,22 +15,54 @@ function Dashboard() {
   const [nombreEditado, setNombreEditado] = useState(perfilUsuario.nombre || '');
   const [correoEditado, setCorreoEditado] = useState(perfilUsuario.correo || '');
 
-  const guardarCambios = () => {
-    const nuevosDatos = {
-      nombre: nombreEditado,
-      correo: correoEditado,
-    };
-    localStorage.setItem('perfilUsuario', JSON.stringify(nuevosDatos));
-    setEditMode(false);
-    setShowProfile(false);
+  // UPDATE
+  const guardarCambios = async () => {
+    const correoOriginal = perfilUsuario.correo;
+    const nombreNuevo = nombreEditado;
+    const correoNuevo = correoEditado;
+
+    try {
+      const response = await fetch('http://localhost:4000/api/user', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ correoOriginal, nombreNuevo, correoNuevo }),
+      });
+
+      if (response.ok) {
+        const nuevosDatos = { nombre: nombreNuevo, correo: correoNuevo };
+        localStorage.setItem('perfilUsuario', JSON.stringify(nuevosDatos));
+        setEditMode(false);
+        setShowProfile(false);
+      } else {
+        const errorText = await response.text();
+        alert(`Error al actualizar usuario: ${errorText}`);
+      }
+    } catch (error) {
+      console.error('Error de conexión:', error);
+      alert('No se pudo conectar con el servidor');
+    }
   };
 
-  const eliminarPerfil = () => {
-    localStorage.removeItem('perfilUsuario');
-    setConfirmDelete(false);
-    setShowProfile(false);
-    setEditMode(false);
-    navigate('/');
+  // DELETE
+  const eliminarPerfil = async () => {
+      try {
+    const response = await fetch('http://localhost:4000/api/delete-user', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ correo: perfilUsuario.correo }),
+    });
+
+    if (response.ok) {
+      localStorage.removeItem('perfilUsuario');
+      navigate('/');
+    } else {
+      const errorText = await response.text();
+      alert(`Error al eliminar usuario: ${errorText}`);
+    }
+  } catch (error) {
+    console.error('Error de conexión:', error);
+    alert('No se pudo conectar con el servidor');
+  }
   };
 
   return (
@@ -70,28 +102,26 @@ function Dashboard() {
                 </div>
               </>
             ) : (
-              <>
-                <form onSubmit={(e) => { e.preventDefault(); guardarCambios(); }}>
-                  <input
-                    type="text"
-                    value={nombreEditado}
-                    onChange={(e) => setNombreEditado(e.target.value)}
-                    placeholder="Nombre"
-                    required
-                  />
-                  <input
-                    type="email"
-                    value={correoEditado}
-                    onChange={(e) => setCorreoEditado(e.target.value)}
-                    placeholder="Correo"
-                    required
-                  />
-                  <div className="modal-buttons">
-                    <button type="submit" className="modal-btn">Guardar</button>
-                    <button type="button" className="modal-btn" onClick={() => setEditMode(false)}>Cancelar</button>
-                  </div>
-                </form>
-              </>
+              <form onSubmit={(e) => { e.preventDefault(); guardarCambios(); }}>
+                <input
+                  type="text"
+                  value={nombreEditado}
+                  onChange={(e) => setNombreEditado(e.target.value)}
+                  placeholder="Nombre"
+                  required
+                />
+                <input
+                  type="email"
+                  value={correoEditado}
+                  onChange={(e) => setCorreoEditado(e.target.value)}
+                  placeholder="Correo"
+                  required
+                />
+                <div className="modal-buttons">
+                  <button type="submit" className="modal-btn">Guardar</button>
+                  <button type="button" className="modal-btn" onClick={() => setEditMode(false)}>Cancelar</button>
+                </div>
+              </form>
             )}
 
             {confirmDelete && (
