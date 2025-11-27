@@ -1,4 +1,4 @@
-# TrfiFix-CRUD
+# TriFix FRONTEND-CRUD
 Repositorio de interfaz tipo CRUD del proyecto TriFix
 
 Se adjuntan modificaciones al FRONTEND del CRUD de TRIfix.
